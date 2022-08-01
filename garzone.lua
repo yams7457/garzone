@@ -4,6 +4,8 @@ function init()
   first_note_of_triad = 12
   current_triad_table = {}
   current_sequence = {}
+  previous_inversion = nil
+  previous_quality = nil
 
 
 end
@@ -121,9 +123,22 @@ function which_inversion()
   
   inversion = triads["aug"][math.random(1,3)]
 
+  if previous_quality == quality then
+    
+    if previous_inversion == inversion then
+      
+      which_inversion()
+    
+    end
+    
+  end
+
 end
 
 function generate_notes()
+  
+  previous_inversion = inversion
+  previous_quality = quality
   
   if quality <= 2 then
   
